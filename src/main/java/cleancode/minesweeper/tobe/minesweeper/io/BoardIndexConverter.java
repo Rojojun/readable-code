@@ -1,29 +1,31 @@
-package cleancode.minesweeper.tobe;
+package cleancode.minesweeper.tobe.minesweeper.io;
+
+import cleancode.minesweeper.tobe.minesweeper.exception.GameExcpetion;
 
 public class BoardIndexConverter {
     private static final char BASE_CHAR_FOR_COL = 'a';
 
-    public int getSelectedColIndex(String cellInput, int colSize) {
+    public int getSelectedColIndex(String cellInput) {
         char cellInputCol = cellInput.charAt(0);
-        return convertColFrom(cellInputCol, colSize);
+        return convertColFrom(cellInputCol);
     }
 
-    public int getSelectedRowIndex(String cellInput, int rowSize) {
+    public int getSelectedRowIndex(String cellInput) {
         String cellInputRow = cellInput.substring(1);
-        return convertRowFrom(cellInputRow, rowSize);
+        return convertRowFrom(cellInputRow);
     }
 
-    private int convertRowFrom(String cellInputRow, int rowSize) {
+    private int convertRowFrom(String cellInputRow) {
         int rowIndex = Integer.parseInt(cellInputRow) - 1;
-        if (rowIndex >=  rowSize || rowIndex < 0) {
+        if (rowIndex < 0) {
             throw new GameExcpetion("Invalid row index : " + rowIndex);
         }
         return rowIndex;
     }
 
-    private int convertColFrom(char cellInputCol, int colSize) {
+    private int convertColFrom(char cellInputCol) {
         int colIndex = cellInputCol - BASE_CHAR_FOR_COL;
-        if (colIndex >= colSize || colIndex < 0) {
+        if (colIndex < 0) {
             throw new GameExcpetion("Invalid column index : " + colIndex);
         }
 

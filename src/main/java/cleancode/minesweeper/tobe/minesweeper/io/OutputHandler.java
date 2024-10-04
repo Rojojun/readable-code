@@ -1,7 +1,7 @@
-package cleancode.minesweeper.tobe.io;
+package cleancode.minesweeper.tobe.minesweeper.io;
 
-import cleancode.minesweeper.tobe.GameBoard;
-import cleancode.minesweeper.tobe.GameExcpetion;
+import cleancode.minesweeper.tobe.minesweeper.board.GameBoard;
+import cleancode.minesweeper.tobe.minesweeper.exception.GameExcpetion;
 
 public interface OutputHandler {
     void showGameStartComments();

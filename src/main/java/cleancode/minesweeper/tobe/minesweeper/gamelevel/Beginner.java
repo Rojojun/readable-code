@@ -1,4 +1,4 @@
-package cleancode.minesweeper.tobe.gamelevel;
+package cleancode.minesweeper.tobe.minesweeper.gamelevel;
 
 public class Beginner implements GameLevel {
     @Override

@@ -1,7 +1,10 @@
-package cleancode.minesweeper.tobe.io;
+package cleancode.minesweeper.tobe.minesweeper.io;
 
-import cleancode.minesweeper.tobe.GameBoard;
-import cleancode.minesweeper.tobe.GameExcpetion;
+import cleancode.minesweeper.tobe.minesweeper.board.GameBoard;
+import cleancode.minesweeper.tobe.minesweeper.exception.GameExcpetion;
+import cleancode.minesweeper.tobe.minesweeper.board.cell.CellSnapshot;
+import cleancode.minesweeper.tobe.minesweeper.io.sign.CellSignProvider;
+import cleancode.minesweeper.tobe.minesweeper.board.position.CellPosition;
 
 import java.util.List;
 import java.util.logging.Logger;
@@ -23,7 +26,11 @@ public class ConsoleOutputHandler implements OutputHandler {
         for (int row = 0; row < board.getRowSize(); row++) {
             System.out.printf("%2d  ", row + 1);
             for (int col = 0; col < board.getColSize(); col++) {
-                System.out.print(board.getSign(row, col) + " ");
+                CellPosition cellPosition = CellPosition.of(row, col);
+                CellSnapshot snapshot = board.getSnapshot(cellPosition);
+//                String cellSign = decideCellSignFrom(snapshot);
+                String cellSign = CellSignProvider.findCellSignFrom(snapshot);
+                System.out.print(cellSign + " ");
             }
             System.out.println();
         }
